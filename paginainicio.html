@@ -7,13 +7,103 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Pantalla de carga -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="logo-loading">
+                <div class="logo-icon">📚</div>
+                <h1 class="logo-text">StudiMarket</h1>
+            </div>
+            <div class="welcome-message">
+                <h2>¡Bienvenido!</h2>
+                <p>Preparando tu experiencia de compra...</p>
+            </div>
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+            </div>
+            <div class="loading-dots">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Contenedor de notificaciones -->
+    <div id="notification-container" class="notification-container"></div>
+    
+    <!-- Modal de detalles del producto -->
+    <div id="product-modal" class="product-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title"></h2>
+                <button id="close-modal" class="close-modal" title="Cerrar">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modal-image" src="" alt="">
+                    <span id="modal-category" class="modal-category-tag"></span>
+                </div>
+                <div class="modal-info">
+                    <div class="modal-brand"></div>
+                    <div class="modal-rating">
+                        <span class="modal-stars"></span>
+                        <span class="modal-rating-text"></span>
+                    </div>
+                    <div class="modal-price"></div>
+                    <div class="modal-description"></div>
+                    <div class="modal-stock-info">
+                        <span>Stock disponible: </span>
+                        <span id="modal-stock" class="modal-stock-number"></span>
+                        <span> unidades</span>
+                    </div>
+                    <div class="modal-quantity-section">
+                        <label for="modal-quantity">Cantidad:</label>
+                        <div class="quantity-controls">
+                            <button id="quantity-minus" class="quantity-btn">−</button>
+                            <input type="number" id="modal-quantity" class="quantity-input" value="1" min="1">
+                            <button id="quantity-plus" class="quantity-btn">+</button>
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <button id="modal-add-to-cart" class="modal-btn primary">
+                            🛒 Agregar al carrito
+                        </button>
+                        <button id="modal-add-to-wishlist" class="modal-btn secondary">
+                            ♡ Agregar a favoritos
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <header class="header">
         <div class="logo">StudiMarket</div>
         <nav class="nav-buttons">
             <a href="#" class="nav-btn primary">🔍 Catálogo</a>
             <a href="#" class="nav-btn">🛒 Carrito</a>
-            <a href="#" class="nav-btn">❤️ Favoritos</a>
+            <a href="#" class="nav-btn" id="wishlist-btn">❤️ Favoritos</a>
         </nav>
+        <div id="wishlist-menu" class="wishlist-menu">
+            <div class="wishlist-header">
+                <span>Mis Favoritos</span>
+                <button id="close-wishlist" title="Cerrar">✕</button>
+            </div>
+            <div id="wishlist-list" class="wishlist-list">
+                <!-- Productos favoritos se insertan aquí -->
+            </div>
+            <div class="wishlist-actions">
+                <button id="buy-all-wishlist" class="wishlist-action-btn buy-all" title="Comprar todos los productos">
+                    🛒 Comprar Todo
+                </button>
+                <button id="clear-all-wishlist" class="wishlist-action-btn clear-all" title="Vaciar lista de favoritos">
+                    🗑️ Vaciar Lista
+                </button>
+            </div>
+            <div class="wishlist-empty">No tienes productos en favoritos.</div>
+        </div>
     </header>
 
     <main class="main-content">
@@ -73,7 +163,10 @@
         </div>
     </main>
 
+    <script src="loading-screen.js"></script>
     <script src="main.js"></script>
+    <script src="wishlist.js"></script>
+    <script src="product-modal.js"></script>
 </body>
 </html>
 

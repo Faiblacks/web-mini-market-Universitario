@@ -1,8 +1,20 @@
 // main.js extraído de paginainicio.html
+// Variables globales
 let allProducts = [];
 let filteredProducts = [];
 
-// Cargar productos desde products.json
+// Función para inicializar la aplicación después de la carga
+function initializeApp() {
+    console.log('🚀 Inicializando StudiMarket...');
+    
+    // Aquí puedes agregar cualquier lógica de inicialización adicional
+    // Por ejemplo: cargar datos del usuario, configurar analytics, etc.
+    
+    // Mostrar mensaje de bienvenida en consola
+    console.log('✅ StudiMarket inicializado correctamente');
+}
+
+// Cargar productos desde JSON
 async function loadProducts() {
     try {
         const response = await fetch('products.json');
@@ -32,12 +44,16 @@ function renderProducts(products) {
         productsGrid.innerHTML = '<div class="loading-message">No se encontraron productos.</div>';
         return;
     }
-    productsGrid.innerHTML = products.map(product => {
+    
+    const wishlist = typeof getWishlist === 'function' ? getWishlist() : [];
+    
+    const productsHTML = products.map(product => {
         let imgSrc = (product.imagenes && product.imagenes.length > 0) ? product.imagenes[0] : getDefaultImage(product.categoria);
         let featuredBadge = product.destacado ? '<span class="featured-badge">Destacado</span>' : '';
         let stockClass = product.stock > 0 ? '' : 'out-of-stock';
         let addToCartClass = product.stock > 0 ? '' : 'disabled';
         let addToCartText = product.stock > 0 ? 'Agregar al carrito' : 'Sin stock';
+        let isFavorite = wishlist.includes(product.id);
         return `
         <article class="product-card">
             <div class="product-image ${stockClass}" style="background-image: url('${imgSrc}')">
@@ -54,13 +70,35 @@ function renderProducts(products) {
                 </div>
                 <div class="product-footer">
                     <span class="price">$${product.precio.toLocaleString()}</span>
-                    <span class="availability ${stockClass}">${product.stock} disponibles</span>
+                    <div class="availability-wishlist">
+                        <span class="availability ${stockClass}">${product.stock} disponibles</span>
+                        <div class="product-actions">
+                            <button class="view-details-btn" data-id="${product.id}" title="Ver detalles">
+                                <span class="details-icon">👁️</span>
+                            </button>
+                            <button class="wishlist-heart-btn ${isFavorite ? 'active' : ''}" data-id="${product.id}" title="Agregar a favoritos">
+                                <span class="heart-icon">♡</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <button class="add-to-cart ${addToCartClass}" onclick="addToCart('${product.id}')" ${product.stock === 0 ? 'disabled' : ''}>${addToCartText}</button>
             </div>
         </article>
         `;
     }).join('');
+
+    productsGrid.innerHTML = productsHTML;
+    
+    // Asignar eventos de wishlist a los botones de corazón
+    if (typeof assignWishlistEvents === 'function') {
+        assignWishlistEvents();
+    }
+    
+    // Asignar eventos a los botones de ver detalles
+    if (typeof assignViewDetailsEvents === 'function') {
+        assignViewDetailsEvents();
+    }
 }
 
 // Generar estrellas basadas en rating
