@@ -122,10 +122,8 @@ function clearAllWishlist() {
         setWishlist([]);
         renderWishlistMenu();
         
-        // Re-renderizar productos para actualizar estados de corazones
-        if (typeof renderProducts === 'function' && typeof filteredProducts !== 'undefined') {
-            renderProducts(filteredProducts);
-        }
+        // Actualizar estados visuales de corazones
+        updateAllHeartStates();
         
         showNotification('🗑️ Lista de favoritos vaciada completamente', 'success');
     }
@@ -144,8 +142,24 @@ function toggleWishlist(productId) {
     }
     setWishlist(wishlist);
     
+    // Actualizar estados visuales de todos los corazones
+    updateAllHeartStates();
+    
     // Actualizar menú solo si está visible
     updateWishlistMenuIfOpen();
+}
+
+// Función para actualizar estados visuales de todos los corazones
+function updateAllHeartStates() {
+    const wishlist = getWishlist();
+    document.querySelectorAll('.wishlist-heart-btn').forEach(btn => {
+        const productId = btn.getAttribute('data-id');
+        if (wishlist.includes(productId)) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
 }
 
 // Función para actualizar el menú solo si está abierto
@@ -178,10 +192,8 @@ function removeFromWishlistMenu(productId) {
     setTimeout(() => {
         renderWishlistMenu();
         
-        // Re-renderizar productos para actualizar estados de corazones
-        if (typeof renderProducts === 'function' && typeof filteredProducts !== 'undefined') {
-            renderProducts(filteredProducts);
-        }
+        // Actualizar estados visuales de corazones
+        updateAllHeartStates();
     }, 50); // Pequeño delay para evitar conflictos
 }
 
@@ -231,41 +243,55 @@ function renderWishlistMenu() {
 }
 
 function assignWishlistEvents() {
+    console.log('Asignando eventos de wishlist...');
+    document.querySelectorAll('.wishlist-heart-btn').forEach(btn => {
+        // Remover event listener existente para evitar duplicados
+        btn.replaceWith(btn.cloneNode(true));
+    });
+    
+    // Re-obtener los botones después de clonar
     document.querySelectorAll('.wishlist-heart-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             const productId = this.getAttribute('data-id');
+            console.log('Click en wishlist para producto:', productId);
             toggleWishlist(productId);
-            
-            // Actualizar el estado visual del corazón
-            this.classList.toggle('active');
-            
-            // Re-renderizar productos para actualizar todos los estados
-            if (typeof renderProducts === 'function' && typeof filteredProducts !== 'undefined') {
-                renderProducts(filteredProducts);
-            }
-            
-            // Actualizar el menú de favoritos
-            renderWishlistMenu();
         });
     });
+    
+    // Actualizar estados iniciales
+    updateAllHeartStates();
+    
+    console.log('Eventos de wishlist asignados a', document.querySelectorAll('.wishlist-heart-btn').length, 'botones');
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('🎯 Inicializando wishlist...');
     const wishlistBtn = document.getElementById('wishlist-btn');
     const wishlistMenu = document.getElementById('wishlist-menu');
     const closeWishlist = document.getElementById('close-wishlist');
     const buyAllBtn = document.getElementById('buy-all-wishlist');
     const clearAllBtn = document.getElementById('clear-all-wishlist');
     
+    console.log('Elementos encontrados:', {
+        wishlistBtn: !!wishlistBtn,
+        wishlistMenu: !!wishlistMenu,
+        closeWishlist: !!closeWishlist,
+        buyAllBtn: !!buyAllBtn,
+        clearAllBtn: !!clearAllBtn
+    });
+    
     if (wishlistBtn && wishlistMenu && closeWishlist) {
+        console.log('✅ Asignando eventos del menú wishlist...');
         wishlistBtn.addEventListener('click', function(e) {
             e.preventDefault();
+            console.log('👆 Click en botón wishlist');
             wishlistMenu.classList.toggle('open');
             renderWishlistMenu();
         });
         closeWishlist.addEventListener('click', function() {
+            console.log('❌ Cerrando wishlist');
             wishlistMenu.classList.remove('open');
         });
         document.addEventListener('click', function(e) {
@@ -273,6 +299,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 wishlistMenu.classList.remove('open');
             }
         });
+    } else {
+        console.error('❌ No se encontraron todos los elementos del wishlist');
     }
     
     // Event listeners para los botones de acción

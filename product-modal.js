@@ -143,14 +143,23 @@ function toggleWishlistFromModal() {
 
 // Asignar eventos a los botones de "Ver detalles"
 function assignViewDetailsEvents() {
+    console.log('Asignando eventos de ver detalles...');
+    document.querySelectorAll('.view-details-btn').forEach(btn => {
+        // Remover event listener existente para evitar duplicados
+        btn.replaceWith(btn.cloneNode(true));
+    });
+    
+    // Re-obtener los botones después de clonar
     document.querySelectorAll('.view-details-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             const productId = this.getAttribute('data-id');
+            console.log('Click en ver detalles para producto:', productId);
             openProductModal(productId);
         });
     });
+    console.log('Eventos de ver detalles asignados a', document.querySelectorAll('.view-details-btn').length, 'botones');
 }
 
 // Event listeners para el modal

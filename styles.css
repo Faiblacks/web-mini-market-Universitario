@@ -1028,10 +1028,11 @@ body {
     position: relative;
 }
 .price-slider::before {
-        position: absolute;
-        top: 60px;
-        right: 0;
-    right: 40%;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
     height: 100%;
     background: #4285f4;
     border-radius: 2px;

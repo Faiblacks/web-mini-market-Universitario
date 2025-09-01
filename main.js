@@ -17,16 +17,18 @@ function initializeApp() {
 // Cargar productos desde JSON
 async function loadProducts() {
     try {
+        console.log('📦 Cargando productos...');
         const response = await fetch('products.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         allProducts = await response.json();
         filteredProducts = [...allProducts];
+        console.log('✅ Productos cargados:', allProducts.length);
         renderProducts(filteredProducts);
         populateCategories();
     } catch (error) {
-        console.error('Error cargando productos:', error);
+        console.error('❌ Error cargando productos:', error);
         showError('Error al cargar los productos. Verifica que el archivo products.json esté en la misma carpeta.');
     }
 }
@@ -39,6 +41,7 @@ function showError(message) {
 
 // Renderizar productos
 function renderProducts(products) {
+    console.log('🎨 Renderizando productos:', products.length);
     const productsGrid = document.getElementById('products-grid');
     if (products.length === 0) {
         productsGrid.innerHTML = '<div class="loading-message">No se encontraron productos.</div>';
@@ -91,14 +94,20 @@ function renderProducts(products) {
     productsGrid.innerHTML = productsHTML;
     
     // Asignar eventos de wishlist a los botones de corazón
-    if (typeof assignWishlistEvents === 'function') {
-        assignWishlistEvents();
-    }
-    
-    // Asignar eventos a los botones de ver detalles
-    if (typeof assignViewDetailsEvents === 'function') {
-        assignViewDetailsEvents();
-    }
+    setTimeout(() => {
+        if (typeof assignWishlistEvents === 'function') {
+            assignWishlistEvents();
+        } else {
+            console.error('assignWishlistEvents function not found');
+        }
+        
+        // Asignar eventos a los botones de ver detalles
+        if (typeof assignViewDetailsEvents === 'function') {
+            assignViewDetailsEvents();
+        } else {
+            console.error('assignViewDetailsEvents function not found');
+        }
+    }, 100);
 }
 
 // Generar estrellas basadas en rating
@@ -188,6 +197,7 @@ function filterProducts() {
 
 // Esperar a que el DOM esté listo
 window.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 DOM cargado, inicializando aplicación...');
     loadProducts();
     document.querySelector('.search-input').addEventListener('input', filterProducts);
     document.querySelector('.filter-select').addEventListener('change', filterProducts);
@@ -199,4 +209,22 @@ window.addEventListener('DOMContentLoaded', function() {
         console.log(`Filtro de precio ajustado a: ${percentage}%`);
         // Aquí puedes implementar el filtro de precio real
     });
+});
+
+// Evento cuando la carga está completa
+document.addEventListener('loadingComplete', function() {
+    console.log('🎉 Carga completa - Inicializando componentes adicionales...');
+    
+    // Pequeño delay para asegurar que todos los scripts estén listos
+    setTimeout(() => {
+        if (typeof allProducts !== 'undefined' && allProducts.length > 0) {
+            console.log('🔄 Re-asignando eventos después de carga completa...');
+            if (typeof assignWishlistEvents === 'function') {
+                assignWishlistEvents();
+            }
+            if (typeof assignViewDetailsEvents === 'function') {
+                assignViewDetailsEvents();
+            }
+        }
+    }, 500);
 });

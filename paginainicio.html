@@ -167,6 +167,30 @@
     <script src="main.js"></script>
     <script src="wishlist.js"></script>
     <script src="product-modal.js"></script>
+    
+    <!-- Script de verificación -->
+    <script>
+        // Verificar que todo esté funcionando después de un pequeño delay
+        setTimeout(() => {
+            console.log('🔍 Verificando componentes...');
+            console.log('- assignWishlistEvents:', typeof assignWishlistEvents);
+            console.log('- assignViewDetailsEvents:', typeof assignViewDetailsEvents);
+            console.log('- toggleWishlist:', typeof toggleWishlist);
+            console.log('- openProductModal:', typeof openProductModal);
+            
+            // Verificar botones
+            const wishlistBtns = document.querySelectorAll('.wishlist-heart-btn');
+            const detailsBtns = document.querySelectorAll('.view-details-btn');
+            console.log('- Botones de wishlist encontrados:', wishlistBtns.length);
+            console.log('- Botones de detalles encontrados:', detailsBtns.length);
+            
+            if (wishlistBtns.length > 0 || detailsBtns.length > 0) {
+                console.log('✅ Botones encontrados, reafirmando eventos...');
+                if (typeof assignWishlistEvents === 'function') assignWishlistEvents();
+                if (typeof assignViewDetailsEvents === 'function') assignViewDetailsEvents();
+            }
+        }, 3000);
+    </script>
 </body>
 </html>
 
