@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "campaigns": [
+    {
+      "campaignId": "96615fdb-68a8-4399-955d-80dc39e6063f",
+      "logo": {
+        "imageUrl": "0a253994-703e-4b70-a3c2-160b1b521839/2b68bedf-db86-4090-99e5-a2db3f43304f.png",
+        "destinationUrl": "https://proshop.golfn.com/discount/BRAVE",
+        "alt": "GolfN - Next time, Pay with Crypto! 600+ items from leading brands. Spend $100+, get a free hoodie. Shop now.",
+        "companyName": "GolfN"
+      },
+      "wallpapers": [
+        {
+          "imageUrl": "0a253994-703e-4b70-a3c2-160b1b521839/c17aca52-827a-49e3-998d-4f3f80765f83.jpg",
+          "creativeInstanceId": "74475bb9-533a-49f4-8ffb-62e08e07b450",
+          "focalPoint": {
+            "x": 1280,
+            "y": 720
+          }
+        },
+        {
+          "imageUrl": "0ddce624-e9f2-4b7e-9a9f-8d3978167d8a/0764ced0-d9d6-4359-b271-71d6a2c81bb1.jpg",
+          "creativeInstanceId": "b789127a-9081-433c-b521-40613640cd79",
+          "focalPoint": {
+            "x": 1280,
+            "y": 720
+          },
+          "logo": {
+            "imageUrl": "0ddce624-e9f2-4b7e-9a9f-8d3978167d8a/344e373e-e9e2-41a9-8f3c-96674b439d85.png",
+            "destinationUrl": "https://marketplace-credits.decentraland.org/?utm_org=dcl&utm_source=brave&utm_medium=paid&utm_campaign=marketplacecredits&utm_term=ntt&utm_content=season2",
+            "alt": "Decentraland - Earn Credits in Decentraland, a social virtual world - explore, play and style your avatar",
+            "companyName": "Decentraland"
+          }
+        },
+        {
+          "imageUrl": "6742e961-3a3d-42da-a7f6-74fa4ece958d/348b96f0-db29-4bdb-bd76-f5bc5f81e4d1.jpg",
+          "creativeInstanceId": "ebba6336-10f2-433b-ab74-ce36c034d2cb",
+          "focalPoint": {
+            "x": 1280,
+            "y": 720
+          },
+          "logo": {
+            "imageUrl": "6742e961-3a3d-42da-a7f6-74fa4ece958d/8ceb2fcb-a44e-466f-891b-f035fca2b9c7.png",
+            "destinationUrl": "https://www.youtube.com/watch?v=qJsozUmRXJw",
+            "alt": "Coinage - Best Dish Ever - Learn More",
+            "companyName": "Coinage"
+          }
+        },
+        {
+          "imageUrl": "d50e7cba-41df-4a9e-9a64-8d901a8d1665/308dc91a-0582-4f00-ae3b-4ac82723279a.jpg",
+          "creativeInstanceId": "665aef04-b811-4800-ad31-0dff34bd272c",
+          "focalPoint": {
+            "x": 1280,
+            "y": 720
+          },
+          "logo": {
+            "imageUrl": "d50e7cba-41df-4a9e-9a64-8d901a8d1665/ae64575e-e977-4e34-9c1d-e6881bcb0972.png",
+            "destinationUrl": "https://edenonline.ubisoft.com/game?utm_source=brave&utm_medium=takeover&utm_campaign=raymanmandatory",
+            "alt": "Ubisoft - Capitan Laserhawk the Game - Discover Ubisoft's most unhinged game! - Play Now",
+            "companyName": "Ubisoft"
+          }
+        }
+      ]
+    }
+  ],
+  "campaigns2": [
+    {
+      "campaignId": "96615fdb-68a8-4399-955d-80dc39e6063f",
+      "logo": {
+        "imageUrl": "0a253994-703e-4b70-a3c2-160b1b521839/2b68bedf-db86-4090-99e5-a2db3f43304f.png",
+        "destinationUrl": "https://proshop.golfn.com/discount/BRAVE",
+        "alt": "GolfN - Next time, Pay with Crypto! 600+ items from leading brands. Spend $100+, get a free hoodie. Shop now.",
+        "companyName": "GolfN"
+      },
+      "wallpapers": [
+        {
+          "imageUrl": "0a253994-703e-4b70-a3c2-160b1b521839/c17aca52-827a-49e3-998d-4f3f80765f83.jpg",
+          "creativeInstanceId": "74475bb9-533a-49f4-8ffb-62e08e07b450",
+          "focalPoint": {
+            "x": 1280,
+            "y": 720
+          }
+        },
+        {
+          "imageUrl": "0ddce624-e9f2-4b7e-9a9f-8d3978167d8a/0764ced0-d9d6-4359-b271-71d6a2c81bb1.jpg",
+          "creativeInstanceId": "b789127a-9081-433c-b521-40613640cd79",
+          "focalPoint": {
+            "x": 1280,
+            "y": 720
+          },
+          "logo": {
+            "imageUrl": "0ddce624-e9f2-4b7e-9a9f-8d3978167d8a/344e373e-e9e2-41a9-8f3c-96674b439d85.png",
+            "destinationUrl": "https://marketplace-credits.decentraland.org/?utm_org=dcl&utm_source=brave&utm_medium=paid&utm_campaign=marketplacecredits&utm_term=ntt&utm_content=season2",
+            "alt": "Decentraland - Earn Credits in Decentraland, a social virtual world - explore, play and style your avatar",
+            "companyName": "Decentraland"
+          }
+        },
+        {
+          "imageUrl": "6742e961-3a3d-42da-a7f6-74fa4ece958d/348b96f0-db29-4bdb-bd76-f5bc5f81e4d1.jpg",
+          "creativeInstanceId": "ebba6336-10f2-433b-ab74-ce36c034d2cb",
+          "focalPoint": {
+            "x": 1280,
+            "y": 720
+          },
+          "logo": {
+            "imageUrl": "6742e961-3a3d-42da-a7f6-74fa4ece958d/8ceb2fcb-a44e-466f-891b-f035fca2b9c7.png",
+            "destinationUrl": "https://www.youtube.com/watch?v=qJsozUmRXJw",
+            "alt": "Coinage - Best Dish Ever - Learn More",
+            "companyName": "Coinage"
+          }
+        },
+        {
+          "imageUrl": "d50e7cba-41df-4a9e-9a64-8d901a8d1665/308dc91a-0582-4f00-ae3b-4ac82723279a.jpg",
+          "creativeInstanceId": "665aef04-b811-4800-ad31-0dff34bd272c",
+          "focalPoint": {
+            "x": 1280,
+            "y": 720
+          },
+          "logo": {
+            "imageUrl": "d50e7cba-41df-4a9e-9a64-8d901a8d1665/ae64575e-e977-4e34-9c1d-e6881bcb0972.png",
+            "destinationUrl": "https://edenonline.ubisoft.com/game?utm_source=brave&utm_medium=takeover&utm_campaign=raymanmandatory",
+            "alt": "Ubisoft - Capitan Laserhawk the Game - Discover Ubisoft's most unhinged game! - Play Now",
+            "companyName": "Ubisoft"
+          }
+        }
+      ]
+    }
+  ]
+}
