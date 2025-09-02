@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug - StudiMarket</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .success { color: green; }
+        .error { color: red; }
+        .info { color: blue; }
+        .container { max-width: 800px; margin: 0 auto; }
+        pre { background: #f5f5f5; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Diagnóstico StudiMarket</h1>
+        <div id="results"></div>
+        
+        <script>
+            async function runDiagnostics() {
+                const results = document.getElementById('results');
+                let html = '<h2>📋 Resultados del Diagnóstico</h2>';
+                
+                // Test 1: Cargar JSON
+                try {
+                    html += '<h3>1. Test de carga de JSON</h3>';
+                    const response = await fetch('products.json');
+                    if (response.ok) {
+                        const products = await response.json();
+                        html += `<p class="success">✅ JSON cargado correctamente (${products.length} productos)</p>`;
+                        html += `<pre>${JSON.stringify(products[0], null, 2)}</pre>`;
+                    } else {
+                        html += `<p class="error">❌ Error HTTP: ${response.status}</p>`;
+                    }
+                } catch (error) {
+                    html += `<p class="error">❌ Error al cargar JSON: ${error.message}</p>`;
+                }
+                
+                // Test 2: Verificar elementos HTML
+                html += '<h3>2. Test de elementos HTML</h3>';
+                const productsGrid = document.querySelector('#products-grid');
+                if (productsGrid) {
+                    html += '<p class="success">✅ Elemento #products-grid encontrado</p>';
+                } else {
+                    html += '<p class="error">❌ Elemento #products-grid NO encontrado</p>';
+                }
+                
+                // Test 3: Verificar archivos JS
+                html += '<h3>3. Test de archivos JavaScript</h3>';
+                const scripts = [
+                    'main.js',
+                    'cart.js', 
+                    'wishlist.js',
+                    'product-modal.js',
+                    'comment-generator.js',
+                    'loading-screen.js'
+                ];
+                
+                for (const script of scripts) {
+                    try {
+                        const response = await fetch(script);
+                        if (response.ok) {
+                            html += `<p class="success">✅ ${script} accesible</p>`;
+                        } else {
+                            html += `<p class="error">❌ ${script} error ${response.status}</p>`;
+                        }
+                    } catch (error) {
+                        html += `<p class="error">❌ ${script} no se puede cargar</p>`;
+                    }
+                }
+                
+                results.innerHTML = html;
+            }
+            
+            runDiagnostics();
+        </script>
+    </div>
+</body>
+</html>

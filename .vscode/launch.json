@@ -7,9 +7,10 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Iniciar Chrome para localhost",
-            "url": "http://localhost:8080",
-            "webRoot": "${workspaceFolder}"
+            "name": "Abrir en Brave StudiMarket",
+            "url": "http://localhost/web-mini-market-Universitario/paginainicio.html",
+            "webRoot": "${workspaceFolder}",
+            "runtimeExecutable": "C:/Program Files/BraveSoftware/Brave-Browser/Application/brave.exe"
         }
     ]
 }
