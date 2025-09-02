@@ -76,5 +76,18 @@
   "imagenes": ["imagenes/pelotafutbol.png"],
   "vendidos": 140,
   "destacado": false
+  },
+  {
+  "id": "SKU-1007",
+  "titulo": "Empanada Premium de Lujo",
+  "categoria": "Comidas",
+  "marca": "Gourmet Elite",
+  "precio": 20000000,
+  "rating": 5.0,
+  "stock": 1,
+  "descripcion": "Esta empanada esta evaluada en mas de 20mil dolares",
+  "imagenes": ["imagenes/empanadas4k.jpg"],
+  "vendidos": 0,
+  "destacado": true
   }
 ]
